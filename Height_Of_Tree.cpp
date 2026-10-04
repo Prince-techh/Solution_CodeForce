@@ -35,12 +35,25 @@ int height(Node* root) {
 
     return max(leftHt,rightHt)+1;
 }
+//Count the Number of Node in the Tree
+int count(Node* root) {
+    if(root == NULL) {
+        return 0;
+    }
+    int leftHT = count(root->left);
+    int rightHT = count(root->right);
+
+    return leftHT+rightHT+1;
+}
 
 int main () {
     vector<int> pre = {1,2,-1,-1,3,4,-1,-1,5,-1,-1};
     Node* root = buildTree(pre.data());
 
     cout << "Height of the tree is: " << height(root) << endl;
+    cout << endl;
+
+    cout << "Count of the Node in the Tree is: " << count(root) << endl;
 
     return 0;
 }
